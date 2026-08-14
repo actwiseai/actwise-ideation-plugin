@@ -6,6 +6,7 @@ import { fileURLToPath } from "node:url";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const endpoint = "https://actwise.ai/ideation/mcp/v1";
+const repository = "https://github.com/actwiseai/actwise-ideation-plugin";
 
 const jsonFiles = [
   "package.json",
@@ -80,6 +81,11 @@ test("compatibility manifests agree on endpoint and version", async () => {
   assert.equal(grok.version, portable.version);
   assert.equal(claude.version, portable.version);
   assert.equal(claudeMarketplace.plugins[0].version, portable.version);
+  assert.equal(portable.repository, repository);
+  assert.equal(codex.repository, repository);
+  assert.equal(grok.repository, repository);
+  assert.equal(claude.repository, repository);
+  assert.equal(claudeMarketplace.plugins[0].repository, repository);
 });
 
 test("declared local component paths exist", async () => {
@@ -138,7 +144,7 @@ test("repository contains no obvious secrets, unfinished placeholders, or em das
     /FIXME/i,
     /BEGIN (?:RSA|OPENSSH|EC) PRIVATE KEY/,
     /(?:api[_-]?key|client[_-]?secret|access[_-]?token)\s*[:=]\s*["'][^"']+["']/i,
-    /(?:github\.com\/|plugins add |marketplace add |plugin install )Actwise\/actwise-ideation-plugin/,
+    /github\.com\/actwise\/actwise-ideation-plugin/i,
     /\u2014/
   ];
 
