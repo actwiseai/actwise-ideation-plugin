@@ -19,7 +19,7 @@ Actwise Ideation applies a venture-capital-informed lens across problem urgency,
 | Codex | Native marketplace |
 | Cursor | Native plugin interface or portable CLI |
 | ChatGPT | MCP connector setup |
-| Devin | MCP setup |
+| Devin | Native plugin CLI or MCP setup |
 
 ### Agent Plugins CLI
 
@@ -67,9 +67,26 @@ npx --yes plugins@1.3.4 add actwiseai/actwise-ideation-plugin --target cursor --
 
 See the [Cursor setup guide](docs/cursor/README.md) for details and the MCP-only alternative.
 
+### Devin
+
+Install the complete plugin from GitHub with Devin CLI:
+
+```bash
+devin plugins install actwiseai/actwise-ideation-plugin
+```
+
+Devin Plugins are currently in closed beta. The generally available MCP-only installation is:
+
+```bash
+devin mcp add actwise-ideation https://actwise.ai/ideation/mcp/v1
+devin mcp login actwise-ideation
+```
+
+See the [Devin setup guide](docs/devin/README.md) for the web-app installation path and surface-specific details.
+
 ### Other clients
 
-See the setup guides for [ChatGPT](docs/chatgpt/README.md) and [Devin](docs/devin/README.md).
+See the setup guide for [ChatGPT](docs/chatgpt/README.md).
 
 ## Start an evaluation
 
