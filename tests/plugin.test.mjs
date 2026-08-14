@@ -155,3 +155,21 @@ test("repository contains no obvious secrets, unfinished placeholders, or em das
     }
   }
 });
+
+test("Devin documentation and the CLI gate cover plugin and MCP installation", async () => {
+  const readme = await read("README.md");
+  const guide = await read("docs/devin/README.md");
+  const workflow = await read(".github/workflows/verify-cli-installs.yml");
+  const pluginCommand = "devin plugins install actwiseai/actwise-ideation-plugin";
+  const mcpCommand = `devin mcp add actwise-ideation ${endpoint}`;
+
+  assert.match(readme, new RegExp(pluginCommand.replaceAll("/", "\\/")));
+  assert.match(readme, new RegExp(mcpCommand.replaceAll("/", "\\/")));
+  assert.match(guide, new RegExp(pluginCommand.replaceAll("/", "\\/")));
+  assert.match(guide, new RegExp(mcpCommand.replaceAll("/", "\\/")));
+  assert.match(guide, /devin mcp login actwise-ideation/);
+  assert.match(workflow, /name: Devin CLI/);
+  assert.match(workflow, /devin plugins install "\$PLUGIN_REPOSITORY" -y/);
+  assert.match(workflow, /devin plugins install \. -y/);
+  assert.match(workflow, /needs\.devin\.result/);
+});
