@@ -132,6 +132,34 @@ jobs:
           jq -e '.plugins["actwise-ideation@actwise"] | length > 0' "$HOME/.claude/plugins/installed_plugins.json"
           jq -e '.enabledPlugins["actwise-ideation@actwise"] == true' "$HOME/.claude/settings.json"
 
+  devin:
+    name: Devin CLI
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Install Devin CLI
+        run: |
+          curl -fsSL https://cli.devin.ai/install.sh | bash
+          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+          "$HOME/.local/bin/devin" --version
+      - name: Verify installation from the public GitHub repository
+        run: |
+          devin plugins install "$PLUGIN_REPOSITORY" -y
+          devin plugins list | tee /tmp/devin-installed.txt
+          devin plugins info actwise-ideation | tee /tmp/devin-details.txt
+          grep -F 'actwise-ideation' /tmp/devin-installed.txt
+          grep -F 'actwise-ideation' /tmp/devin-details.txt
+          grep -R -F "$MCP_URL" "$HOME/.local/share/devin"
+      - name: Verify the pull request contents
+        run: |
+          devin plugins remove actwise-ideation
+          devin plugins install . -y
+          devin plugins list | tee /tmp/devin-local-installed.txt
+          devin plugins info actwise-ideation | tee /tmp/devin-local-details.txt
+          grep -F 'actwise-ideation' /tmp/devin-local-installed.txt
+          grep -F 'actwise-ideation' /tmp/devin-local-details.txt
+
   portable:
     name: Agent Plugins CLI
     runs-on: ubuntu-latest
@@ -160,6 +188,7 @@ jobs:
       - claude
       - grok
       - cursor
+      - devin
       - portable
     runs-on: ubuntu-latest
     steps:
@@ -170,4 +199,5 @@ jobs:
           test "${{ needs.claude.result }}" = "success"
           test "${{ needs.grok.result }}" = "success"
           test "${{ needs.cursor.result }}" = "success"
+          test "${{ needs.devin.result }}" = "success"
           test "${{ needs.portable.result }}" = "success"
