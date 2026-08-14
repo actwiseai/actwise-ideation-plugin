@@ -63,7 +63,7 @@ jobs:
           claude plugin details actwise-ideation@actwise | tee /tmp/claude-details.txt
       - name: Verify the installed skill and MCP server
         run: |
-          jq -e '.[] | select(.name == "actwise-ideation" and .enabled == true)' /tmp/claude-installed.json
+          jq -e '.[] | select((.id == "actwise-ideation@actwise" or .name == "actwise-ideation") and .enabled == true)' /tmp/claude-installed.json
           installed_path="$(find "$HOME/.claude/plugins/cache" -type f -path '*/actwise-ideation/*/.mcp.json' -printf '%h\n' | head -n 1)"
           test -n "$installed_path"
           test -f "$installed_path/skills/actwise-ideation/SKILL.md"
