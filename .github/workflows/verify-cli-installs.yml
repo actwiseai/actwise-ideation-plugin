@@ -153,7 +153,8 @@ jobs:
           grep -R -F "$MCP_URL" "$HOME/.local/share/devin"
       - name: Verify the pull request contents
         run: |
-          devin plugins remove actwise-ideation
+          export XDG_CONFIG_HOME="$RUNNER_TEMP/devin-local-config"
+          export XDG_DATA_HOME="$RUNNER_TEMP/devin-local-data"
           devin plugins install . -y
           devin plugins list | tee /tmp/devin-local-installed.txt
           devin plugins info actwise-ideation | tee /tmp/devin-local-details.txt
