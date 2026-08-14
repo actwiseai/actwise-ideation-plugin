@@ -1,5 +1,7 @@
 # Actwise Ideation Plugin
 
+[![CLI Installation Gate](https://github.com/actwiseai/actwise-ideation-plugin/actions/workflows/verify-cli-installs.yml/badge.svg?branch=master)](https://github.com/actwiseai/actwise-ideation-plugin/actions/workflows/verify-cli-installs.yml)
+
 <p align="center">
   <img src="assets/brand/actwise-logo.svg" alt="Actwise" width="240">
 </p>
@@ -9,6 +11,15 @@ Evaluate, improve, and benchmark startup and product ideas from supported AI cli
 Actwise Ideation applies a venture-capital-informed lens across problem urgency, customer clarity, insight, distribution, market, timing, and moat. The hosted MCP service provides the current evaluation contract, tools, resources, and browser-based OAuth flow.
 
 ## Install
+
+| Client | Installation path |
+| --- | --- |
+| Grok Build | Native plugin CLI |
+| Claude Code | Native marketplace |
+| Codex | Native marketplace |
+| Cursor | Native plugin interface or portable CLI |
+| ChatGPT | MCP connector setup |
+| Devin | MCP setup |
 
 ### Agent Plugins CLI
 
@@ -42,13 +53,23 @@ codex plugin add actwise-ideation@actwise
 
 ### Cursor
 
+Open an agent chat, enter `/plugin`, paste the repository URL below into plugin search, and install Actwise Ideation at user scope:
+
+```text
+https://github.com/actwiseai/actwise-ideation-plugin
+```
+
+For non-interactive installation:
+
 ```bash
 npx --yes plugins@1.3.4 add actwiseai/actwise-ideation-plugin --target cursor --scope user --yes
 ```
 
+See the [Cursor setup guide](docs/cursor/README.md) for details and the MCP-only alternative.
+
 ### Other clients
 
-See the setup guides for [ChatGPT](docs/chatgpt/README.md), [Cursor](docs/cursor/README.md), and [Devin](docs/devin/README.md).
+See the setup guides for [ChatGPT](docs/chatgpt/README.md) and [Devin](docs/devin/README.md).
 
 ## Start an evaluation
 
@@ -70,9 +91,9 @@ The installed skill lets supported agents recognize this workflow without requir
 ## What this repository contains
 
 - A portable Agent Plugins v1 manifest and hosted MCP configuration.
-- Native manifests for Codex, ChatGPT, Claude Code, and Grok Build.
+- Client and marketplace manifests for Codex, Claude Code, and Grok Build.
 - One canonical `actwise-ideation` skill.
-- Client-specific installation guides.
+- Client-specific installation guides for ChatGPT, Cursor, and Devin.
 - Automated consistency and safety checks.
 
 This repository contains distribution metadata and agent instructions only. It does not contain the Actwise evaluation service or scoring implementation.
