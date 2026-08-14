@@ -1,0 +1,13 @@
+{
+  "name": "actwise-ideation-plugin",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Cross-agent plugin manifests, skill, and setup guides for Actwise Ideation.",
+  "type": "module",
+  "engines": {
+    "node": "23.6.1"
+  },
+  "scripts": {
+    "test": "node --test tests/plugin.test.mjs"
+  }
+}

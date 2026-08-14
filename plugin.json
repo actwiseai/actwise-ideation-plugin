@@ -1,0 +1,19 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "actwise-ideation",
+  "version": "0.1.0",
+  "description": "Evaluate, improve, and benchmark startup and product ideas with Actwise Ideation.",
+  "author": {
+    "name": "Actwise Ltd",
+    "email": "support@actwise.ai",
+    "url": "https://actwise.ai"
+  },
+  "homepage": "https://actwise.ai/home/ideation",
+  "repository": "https://github.com/actwiseai/actwise-ideation-plugin",
+  "license": "MIT",
+  "keywords": [
+    "actwise",
+    "actwise-ideation",
+    "idea-standing"
+  ]
+}

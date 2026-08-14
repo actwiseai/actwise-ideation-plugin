@@ -1,0 +1,43 @@
+{
+  "name": "actwise-ideation",
+  "version": "0.1.0",
+  "description": "Evaluate, improve, and benchmark startup and product ideas with Actwise Ideation.",
+  "author": {
+    "name": "Actwise Ltd",
+    "email": "support@actwise.ai",
+    "url": "https://actwise.ai"
+  },
+  "homepage": "https://actwise.ai/home/ideation",
+  "repository": "https://github.com/actwise/actwise-ideation-plugin",
+  "license": "MIT",
+  "keywords": [
+    "actwise",
+    "actwise-ideation",
+    "idea-standing"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Actwise Ideation",
+    "shortDescription": "Evaluate and improve ideas",
+    "longDescription": "Evaluate startup and product ideas with a venture-capital-informed lens, compare where they stand, improve the weakest areas, and re-measure progress.",
+    "developerName": "Actwise Ltd",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive",
+      "Read",
+      "Write"
+    ],
+    "websiteURL": "https://actwise.ai/home/ideation",
+    "privacyPolicyURL": "https://actwise.ai/home/privacy",
+    "termsOfServiceURL": "https://actwise.ai/home/terms",
+    "defaultPrompt": [
+      "Use Actwise Ideation to evaluate and improve my startup idea.",
+      "Preview this product idea and identify the weakest evaluation lens.",
+      "Run an official Actwise evaluation of this idea for a benchmarked snapshot."
+    ],
+    "brandColor": "#007BFF",
+    "composerIcon": "./assets/brand/actwise-icon.svg",
+    "logo": "./assets/brand/actwise-icon.png"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "name": "actwise",
+  "interface": {
+    "displayName": "Actwise"
+  },
+  "plugins": [
+    {
+      "name": "actwise-ideation",
+      "source": {
+        "source": "local",
+        "path": "./"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

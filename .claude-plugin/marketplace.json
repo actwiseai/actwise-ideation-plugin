@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-marketplace.json",
+  "name": "actwise",
+  "description": "Actwise agent plugins for evaluating and improving ideas.",
+  "owner": {
+    "name": "Actwise Ltd",
+    "url": "https://actwise.ai"
+  },
+  "plugins": [
+    {
+      "name": "actwise-ideation",
+      "displayName": "Actwise Ideation",
+      "source": "./",
+      "description": "Evaluate, improve, and benchmark startup and product ideas.",
+      "version": "0.1.0",
+      "author": {
+        "name": "Actwise Ltd",
+        "url": "https://actwise.ai"
+      },
+      "homepage": "https://actwise.ai/home/ideation",
+      "repository": "https://github.com/actwise/actwise-ideation-plugin",
+      "license": "MIT",
+      "keywords": [
+        "actwise",
+        "actwise-ideation",
+        "idea-standing"
+      ],
+      "category": "productivity",
+      "tags": [
+        "actwise",
+        "ideation",
+        "evaluation"
+      ]
+    }
+  ]
+}

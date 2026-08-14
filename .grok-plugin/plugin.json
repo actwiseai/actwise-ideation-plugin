@@ -1,0 +1,22 @@
+{
+  "name": "actwise-ideation",
+  "displayName": "Actwise Ideation",
+  "version": "0.1.0",
+  "description": "Evaluate, improve, and benchmark startup and product ideas with Actwise Ideation in Grok Build.",
+  "author": {
+    "name": "Actwise Ltd",
+    "email": "support@actwise.ai",
+    "url": "https://actwise.ai"
+  },
+  "homepage": "https://actwise.ai/home/ideation",
+  "repository": "https://github.com/actwise/actwise-ideation-plugin",
+  "license": "MIT",
+  "keywords": [
+    "actwise",
+    "actwise-ideation",
+    "idea-standing"
+  ],
+  "logo": "assets/brand/actwise-icon.png",
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json"
+}
