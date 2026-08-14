@@ -172,7 +172,8 @@ test("Devin documentation and the CLI gate cover plugin and MCP installation", a
   assert.match(workflow, /DEVIN_VERSION: 3000\.4\.25/);
   assert.match(workflow, /sha256sum --check/);
   assert.doesNotMatch(workflow, /cli\.devin\.ai\/install\.sh/);
-  assert.match(workflow, /devin plugins install "\$PLUGIN_REPOSITORY" -y/);
-  assert.match(workflow, /devin plugins install \. -y/);
+  assert.match(workflow, /devin plugins install --help/);
+  assert.match(workflow, /devin mcp add -s user actwise-ideation "\$MCP_URL"/);
+  assert.doesNotMatch(workflow, /devin plugins install "\$PLUGIN_REPOSITORY" -y/);
   assert.match(workflow, /needs\.devin\.result/);
 });
