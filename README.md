@@ -40,6 +40,12 @@ codex plugin marketplace add actwiseai/actwise-ideation-plugin
 codex plugin add actwise-ideation@actwise
 ```
 
+### Cursor
+
+```bash
+npx --yes plugins@1.3.4 add actwiseai/actwise-ideation-plugin --target cursor --scope user --yes
+```
+
 ### Other clients
 
 See the setup guides for [ChatGPT](docs/chatgpt/README.md), [Cursor](docs/cursor/README.md), and [Devin](docs/devin/README.md).
