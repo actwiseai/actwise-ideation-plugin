@@ -15,6 +15,19 @@ env:
   MCP_URL: https://actwise.ai/ideation/mcp/v1
 
 jobs:
+  repository:
+    name: Repository validation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 23.6.1
+      - name: Validate manifests and repository safety
+        run: npm test
+
   codex:
     name: Codex CLI
     runs-on: ubuntu-latest
@@ -113,3 +126,22 @@ jobs:
           test -n "$installed_path"
           test -f "$installed_path/skills/actwise-ideation/SKILL.md"
           jq -e --arg url "$MCP_URL" '.mcpServers["actwise-ideation"].url == $url' "$installed_path/.mcp.json"
+
+  gate:
+    name: CLI Installation Gate
+    if: always()
+    needs:
+      - repository
+      - codex
+      - claude
+      - grok
+      - portable
+    runs-on: ubuntu-latest
+    steps:
+      - name: Require every validation job to pass
+        run: |
+          test "${{ needs.repository.result }}" = "success"
+          test "${{ needs.codex.result }}" = "success"
+          test "${{ needs.claude.result }}" = "success"
+          test "${{ needs.grok.result }}" = "success"
+          test "${{ needs.portable.result }}" = "success"
