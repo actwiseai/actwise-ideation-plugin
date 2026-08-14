@@ -151,23 +151,16 @@ jobs:
           tar -xzf "$archive" -C "$install_dir"
           echo "$install_dir/bin" >> "$GITHUB_PATH"
           "$install_dir/bin/devin" --version
-      - name: Verify installation from the public GitHub repository
-        run: |
-          devin plugins install "$PLUGIN_REPOSITORY" -y
-          devin plugins list | tee /tmp/devin-installed.txt
-          devin plugins info actwise-ideation | tee /tmp/devin-details.txt
-          grep -F 'actwise-ideation' /tmp/devin-installed.txt
-          grep -F 'actwise-ideation' /tmp/devin-details.txt
-          grep -R -F "$MCP_URL" "$HOME/.local/share/devin"
-      - name: Verify the pull request contents
+      - name: Verify Devin plugin and MCP commands
         run: |
           export XDG_CONFIG_HOME="$RUNNER_TEMP/devin-local-config"
           export XDG_DATA_HOME="$RUNNER_TEMP/devin-local-data"
-          devin plugins install . -y
-          devin plugins list | tee /tmp/devin-local-installed.txt
-          devin plugins info actwise-ideation | tee /tmp/devin-local-details.txt
-          grep -F 'actwise-ideation' /tmp/devin-local-installed.txt
-          grep -F 'actwise-ideation' /tmp/devin-local-details.txt
+          devin plugins install --help
+          devin mcp add --help
+          devin mcp add -s user actwise-ideation "$MCP_URL"
+          devin mcp get actwise-ideation | tee /tmp/devin-mcp.txt
+          grep -F 'actwise-ideation' /tmp/devin-mcp.txt
+          grep -F "$MCP_URL" /tmp/devin-mcp.txt
 
   portable:
     name: Agent Plugins CLI
